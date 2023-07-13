@@ -1,6 +1,6 @@
-package org.example;
+package HeapTree;
 
-public class Heap {
+public class BinaryHeapTree {
 
     int MAXSIZE = 0;
 
@@ -8,13 +8,13 @@ public class Heap {
 
     int n = 0;
 
-    public Heap(int max){
+    public BinaryHeapTree(int max){
         this.MAXSIZE = max;
         this.heap = new int[max+1];
 
     }
 
-    public Heap(int max, int[] array) {
+    public BinaryHeapTree(int max, int[] array) {
         this.MAXSIZE = max;
         this.n = array.length;
         this.heap = new int[max + 1];
@@ -40,7 +40,7 @@ public class Heap {
             heap[n] = value;
             bubbleUp(n);
         } else {
-            throw new Exception("Heap is full");
+            throw new Exception("HeapTree.Heap is full");
         }
     }
 
