@@ -41,33 +41,29 @@ public class LinkedList {
     //removes node at index in argument
     public void remove(int index) {
         Node cursor = list;
-        for (int i = 0; i < index - 1; i++) {
-            if (cursor == null) {
-                throw new IndexOutOfBoundsException();
-            }
-            cursor = cursor.nextNode;
-        }
-        if (cursor.nextNode != null) {
-            cursor.nextNode = cursor.nextNode.nextNode;
-        } else {
+
+        if (index < 0 || index >= this.length()) {
             throw new IndexOutOfBoundsException();
         }
+
+        for (int i = 0; i < index - 1; i++) {
+            cursor = cursor.nextNode;
+        }
+
+        cursor.nextNode = cursor.nextNode.nextNode;
     }
 
     //gets value of node at index in the argument
     public int get(int index) {
-         Node cursor = list;
-         for (int i = 0; i < index; i++) {
-             if (cursor == null) {
-                 throw new IndexOutOfBoundsException();
-             }
-             cursor = cursor.nextNode;
-         }
-         if (cursor != null) {
-             return cursor.val;
-         } else {
-             throw new IndexOutOfBoundsException();
-         }
+        if (index < 0 || index >= this.length()) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        Node cursor = list;
+        for (int i = 0; i < index; i++) {
+            cursor = cursor.nextNode;
+        }
+        return cursor.val;
     }
 
     public void insert(int val) {
@@ -104,17 +100,16 @@ public class LinkedList {
 
     public void insertAt(int index, int val) {
         Node cursor = list;
+        int length = this.length();
         if (index == 0) {
             insertStart(val);
+        } else if (index > length || index < 0) {
+            throw new IndexOutOfBoundsException();
+        } else if (index == length) {
+            this.insert(val);
         } else {
             for (int i = 0; i < index - 1; i++) {
-                if (cursor == null) {
-                    throw new IndexOutOfBoundsException();
-                }
                 cursor = cursor.nextNode;
-            }
-            if (cursor == null) {
-                throw new IndexOutOfBoundsException();
             }
             cursor.nextNode = new Node(val, cursor.nextNode);
         }
