@@ -32,5 +32,10 @@ public class Main {
         list.print();
 
         System.out.println(list.get(1));
+
+        list.insertAt(3, 10);
+        list.print();
+
+        System.out.println(list.length());
     }
 }

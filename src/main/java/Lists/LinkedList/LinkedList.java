@@ -102,11 +102,41 @@ public class LinkedList {
         }
     }
 
+    public void insertAt(int index, int val) {
+        Node cursor = list;
+        if (index == 0) {
+            insertStart(val);
+        } else {
+            for (int i = 0; i < index - 1; i++) {
+                if (cursor == null) {
+                    throw new IndexOutOfBoundsException();
+                }
+                cursor = cursor.nextNode;
+            }
+            if (cursor == null) {
+                throw new IndexOutOfBoundsException();
+            }
+            cursor.nextNode = new Node(val, cursor.nextNode);
+        }
+    }
+
+    public int length() {
+        Node cursor = list;
+        int length = 0;
+
+        while (cursor != null) {
+            length++;
+            cursor = cursor.nextNode;
+        }
+
+        return length;
+    }
+
     public void print() {
         Node cursor = list;
         while (cursor != null) {
             System.out.printf("%d", cursor.val);
-            System.out.printf(" ");
+            System.out.print(" ");
             cursor = cursor.nextNode;
         }
         System.out.println();
