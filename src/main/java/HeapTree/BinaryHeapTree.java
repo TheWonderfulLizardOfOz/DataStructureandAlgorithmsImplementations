@@ -2,7 +2,7 @@ package HeapTree;
 
 public class BinaryHeapTree {
 
-    int MAXSIZE = 0;
+    int MAXSIZE;
 
     int[] heap;
 
@@ -40,7 +40,7 @@ public class BinaryHeapTree {
             heap[n] = value;
             bubbleUp(n);
         } else {
-            throw new Exception("HeapTree.Heap is full");
+            throw new Exception("HeapTree.HeapIsFull");
         }
     }
 
@@ -82,12 +82,28 @@ public class BinaryHeapTree {
         for (int i = 1; i <= n; i++) {
             System.out.printf("%d ",heap[i]);
         }
-        System.out.println("");
+        System.out.println();
     }
 
     public void heapify() {
         for (int j = n/2; j > 0; j--) {
             bubbleDown(j);
         }
+    }
+
+    public int[] getHeap() {
+        return this.heap;
+    }
+
+    public int get(int index) {
+        if (index <= n && index > 0) {
+            return this.heap[index];
+        } else {
+            throw new IndexOutOfBoundsException();
+        }
+    }
+
+    public int length() {
+        return n;
     }
 }
