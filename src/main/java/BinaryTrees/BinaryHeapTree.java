@@ -1,4 +1,4 @@
-package HeapTree;
+package BinaryTrees;
 
 public class BinaryHeapTree {
 
