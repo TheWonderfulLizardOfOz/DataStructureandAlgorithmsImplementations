@@ -1,4 +1,4 @@
-package HeapTree;
+package BinaryTrees;
 
 import BinaryTrees.BinaryHeapTree;
 import org.junit.jupiter.api.Test;
